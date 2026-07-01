@@ -1,280 +1,229 @@
+/* 全局基础重置 */
 * {
     margin: 0;
     padding: 0;
+    box-shadow: none;
     box-sizing: border-box;
 }
-
 body {
-    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
     line-height: 1.6;
-    color: #555;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+}
+a {
+    color: #2ecc71;
+    text-decoration: none;
 }
 
-/* 头部导航 */
+/* 导航栏 */
 header {
-    background: rgba(0, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 1rem 2rem;
-    position: fixed;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    z-index: 100;
 }
-
 nav {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 20px;
 }
-
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
-
 .nav-links {
     display: flex;
-    gap: 2rem;
     list-style: none;
+    gap: 20px;
 }
-
 .nav-links a {
-    text-decoration: none;
-    color: #333;
+    color: #555;
     font-weight: 500;
-    transition: color 0.3s;
 }
-
 .nav-links a:hover {
-    color: #667eea;
+    color: #2ecc71;
 }
 
-/* 主要内容区 */
+/* 首页布局 */
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 120px 2rem 2rem;
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 2rem;
+    max-width: 1100px;
+    margin: 30px auto;
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+}
+.articles {
+    flex: 3;
+}
+.sidebar {
+    flex: 1;
 }
 
-/* 阳光 */
-.article-card {
-    background: white;
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+/* 卡片通用样式 */
+.article-card, .sidebar-card, .list-container, .post-content-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .article-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-.article-card h2 {
-    color: #333;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
+/* 文章头部信息 */
 .article-meta {
-    color: #999;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #888;
+    margin: 8px 0 15px 0;
 }
-
 .article-excerpt {
     color: #666;
-    line-height: 1.8;
+    margin-bottom: 15px;
 }
-
 .read-more {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1.5rem;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 500;
-    transition: transform 0.3s;
+    font-weight: bold;
 }
 
-.read-more:hover {
-    transform: scale(1.05);
-}
-
-/* 侧边栏 */
-.sidebar {
-    position: sticky;
-    top: 100px;
-}
-
-.sidebar-card {
-    background: white;
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-}
-
-.sidebar-card h3 {
-    color: #333;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 0.5rem;
-}
-
+/* 侧边栏特定样式 */
 .profile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin: 0 auto 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    color: white;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 10px;
 }
-
 .profile-name {
     text-align: center;
-    font-weight: bold;
     font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
-
 .profile-bio {
     text-align: center;
-    color: #666;
+    color: #777;
     font-size: 0.9rem;
+    margin-top: 5px;
 }
-
 .category-list {
     list-style: none;
+    margin-top: 10px;
 }
-
 .category-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.category-list li:last-child {
-    border-bottom: none;
+/* === 列表页 (list.html) 专属样式 === */
+.list-wrapper, .post-wrapper {
+    display: block;
+    max-width: 800px;
+}
+.list-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-left: 5px solid #2ecc71;
+    padding-left: 10px;
+}
+.title-list {
+    list-style: none;
+}
+.title-list li {
+    padding: 15px 5px;
+    border-bottom: 1px dashed #e0e0e0;
+    display: flex;
+    align-items: center;
+}
+.list-date {
+    color: #aaa;
+    font-size: 0.9rem;
+    width: 110px;
+    flex-shrink: 0;
+}
+.title-list li a {
+    color: #333;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+.title-list li a:hover {
+    color: #2ecc71;
 }
 
-.category-list a {
-    text-decoration: none;
-    color: #666;
+/* 翻页组件 */
+.pagination {
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.page-btn {
+    padding: 8px 18px;
+    background: #eef2f5;
+    color: #444;
+    border-radius: 6px;
+    font-weight: 500;
+}
+.page-btn:hover:not(.disable) {
+    background: #2ecc71;
+    color: #fff;
+}
+.page-btn.disable {
+    color: #ccc;
+    cursor: not-allowed;
+    background: #f7f7f7;
+}
+.page-num {
+    color: #777;
+    font-size: 0.95rem;
 }
 
-.category-list a:hover {
-    color: #667eea;
+/* === 文章页 (post1.html) 专属样式 === */
+.post-inner-title {
+    font-size: 2rem;
+    margin-bottom: 5px;
 }
-
-.tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+.post-divider {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
 }
-
-.tag {
-    padding: 0.3rem 0.8rem;
-    background: linear-gradient(135deg, #667eea20, #764ba220);
-    color: #667eea;
-    border-radius: 15px;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: all 0.3s;
+.post-body p {
+    margin-bottom: 15px;
+    color: #444;
 }
-
-.tag:hover {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+.post-body h3 {
+    margin: 25px 0 10px 0;
+    color: #222;
+}
+.post-body code {
+    background: #f1f2f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #e74c3c;
+    font-family: Consolas, monospace;
+}
+.back-area {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.back-btn {
+    color: #666;
+}
+.back-btn:hover {
+    color: #2ecc71;
 }
 
 /* 页脚 */
 footer {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
     text-align: center;
-    margin-top: 3rem;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.social-links a {
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: transform 0.3s;
-}
-
-.social-links a:hover {
-    transform: scale(1.2);
-}
-
-.copyright {
-    color: #999;
+    padding: 30px;
+    color: #aaa;
     font-size: 0.9rem;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    main {
-        grid-template-columns: 1fr;
-    }
-    
-    .nav-links {
-        display: none;
-    }
-    
-    .sidebar {
-        position: static;
-    }
-}
-
-/* 动画效果 */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.article-card {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-.article-card:nth-child(2) {
-    animation-delay: 0.1s;
-}
-
-.article-card:nth-child(3) {
-    animation-delay: 0.2s;
+    margin-top: 5px;
 }
